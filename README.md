@@ -38,7 +38,7 @@ Node 20 of nieuwer is genoeg; er zijn geen dependencies.
 4. Koppel die aan het project: **Pages-project → Settings → Bindings → Add → KV namespace**, variabele `LOOPMAATJE`, namespace `loopmaatje`. Doe opnieuw een deploy.
 5. Optioneel: een eigen domein via **Custom domains**.
 
-Wie liever met de command line werkt: vul het namespace-id in `wrangler.toml` in en gebruik `npx wrangler pages deploy`.
+Er staat bewust geen `wrangler.toml` in de repository: dan kun je de koppeling gewoon in het Cloudflare-dashboard instellen.
 
 ## Bekende beperkingen van deze eerste versie
 
