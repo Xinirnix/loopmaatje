@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Loopmaatje</title>
+<meta name="theme-color" content="#15211d">
+<meta name="robots" content="noindex">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700;800&family=Barlow:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<main class="wrap">
+  <nav class="toolbar">
+    <a class="home" href="/">← Loopmaatje</a>
+    <button id="share" class="quiet" hidden>Delen</button>
+    <button id="edit" class="quiet" hidden>Schema aanpassen</button>
+  </nav>
+  <div class="notice" id="welcome" hidden></div>
+  <div class="notice" id="notice" hidden></div>
+  <div id="view"></div>
+</main>
+<script type="module" src="/schema.js"></script>
+</body>
+</html>
