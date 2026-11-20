@@ -9,6 +9,6 @@
   },
   "kv_namespaces": [
     // The id of the KV namespace "loopmaatje" (Storage & Databases > KV in the Cloudflare dashboard)
-    { "binding": "LOOPMAATJE", "id": "REPLACE_WITH_KV_NAMESPACE_ID" }
+    { "binding": "LOOPMAATJE", "id": "2f341947fe124746a3c6446e4cb04941" }
   ]
 }

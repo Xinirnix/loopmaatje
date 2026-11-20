@@ -32,7 +32,7 @@ Of met de echte Cloudflare-omgeving: `npx wrangler dev`.
 ## Online zetten (Cloudflare Workers)
 
 1. Maak een KV-namespace in het Cloudflare-dashboard: **Storage & Databases → KV → Create**, naam `loopmaatje`.
-2. Zet het ID van die namespace in `wrangler.jsonc` bij `kv_namespaces`.
+2. Zet het ID van die namespace in `wrangler.jsonc` bij `kv_namespaces` (staat al ingevuld voor de huidige namespace).
 3. Maak een Worker die aan deze repository gekoppeld is: **Workers & Pages → Create → Import a repository**. Laat het deploy command op `npx wrangler deploy` staan.
 4. Elke push naar `main` zet de site online op `loopmaatje.<jouw-subdomein>.workers.dev`. Een eigen domein kan via **Settings → Domains & Routes**.
 
