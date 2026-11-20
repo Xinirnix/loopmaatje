@@ -13,8 +13,9 @@ Samen een loopschema volgen: kies of maak je trainingsschema, vink trainingen af
 ## Hoe het in elkaar zit
 
 - `public/`: de website zelf, gewone HTML, CSS en JavaScript zonder build-stap.
-- `functions/api/schema/`: de API als Cloudflare Pages Functions.
+- `src/worker.js`: een Cloudflare Worker die `/api/schema` afhandelt en de rest uit `public/` serveert.
 - `lib/store.js`: validatie en opslag. Elk schema is één JSON-document in Cloudflare KV (`s:<id>`).
+- `wrangler.jsonc`: de instellingen voor Cloudflare, met de koppeling naar de KV-namespace.
 - `dev/server.mjs`: lokale server met opslag in het geheugen, zonder extra pakketten.
 
 Het maximale aantal lopers staat in `MAX_PEOPLE` in `lib/store.js` en `public/schema.js`.
@@ -22,23 +23,18 @@ Het maximale aantal lopers staat in `MAX_PEOPLE` in `lib/store.js` en `public/sc
 ## Lokaal draaien
 
 ```sh
-npm run dev   # http://localhost:8788
+npm run dev   # http://localhost:8788, zonder dependencies
 npm test
 ```
 
-Node 20 of nieuwer is genoeg; er zijn geen dependencies.
+Of met de echte Cloudflare-omgeving: `npx wrangler dev`.
 
-## Online zetten (Cloudflare Pages)
+## Online zetten (Cloudflare Workers)
 
-1. Maak een gratis account op [cloudflare.com](https://dash.cloudflare.com/sign-up).
-2. Ga naar **Workers & Pages → Create → Pages → Connect to Git** en kies deze repository.
-   - Build command: leeg laten
-   - Build output directory: `public`
-3. Maak een KV-namespace: **Storage & Databases → KV → Create**, naam `loopmaatje`.
-4. Koppel die aan het project: **Pages-project → Settings → Bindings → Add → KV namespace**, variabele `LOOPMAATJE`, namespace `loopmaatje`. Doe opnieuw een deploy.
-5. Optioneel: een eigen domein via **Custom domains**.
-
-Er staat bewust geen `wrangler.toml` in de repository: dan kun je de koppeling gewoon in het Cloudflare-dashboard instellen.
+1. Maak een KV-namespace in het Cloudflare-dashboard: **Storage & Databases → KV → Create**, naam `loopmaatje`.
+2. Zet het ID van die namespace in `wrangler.jsonc` bij `kv_namespaces`.
+3. Maak een Worker die aan deze repository gekoppeld is: **Workers & Pages → Create → Import a repository**. Laat het deploy command op `npx wrangler deploy` staan.
+4. Elke push naar `main` zet de site online op `loopmaatje.<jouw-subdomein>.workers.dev`. Een eigen domein kan via **Settings → Domains & Routes**.
 
 ## Bekende beperkingen van deze eerste versie
 
