@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Loopmaatje</title>
+<meta name="description" content="Samen een loopschema volgen: kies of maak je trainingsschema, vink trainingen af en deel het met je loopmaatje.">
+<meta name="theme-color" content="#15211d">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700;800&family=Barlow:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<main class="wrap">
+  <header class="hero">
+    <h1>Loopmaatje</h1>
+    <p>Kies een trainingsschema naar je wedstrijd toe, vink je trainingen af en deel het met je loopmaatje. Geen account nodig: wie de link heeft, kan meedoen.</p>
+  </header>
+
+  <section class="card" id="mineCard" hidden>
+    <h2>Jouw schema's</h2>
+    <p class="muted" style="margin:4px 0 10px;font-size:.85rem">Schema's die je op dit toestel geopend hebt.</p>
+    <ul class="mine" id="mine"></ul>
+  </section>
+
+  <section class="card">
+    <h2 style="margin-bottom:10px">Nieuw schema maken</h2>
+    <form class="form" id="create">
+      <div class="field">
+        <label for="title">Naam van je doel</label>
+        <input type="text" id="title" required maxlength="80" placeholder="bv. Stadsloop 10 km">
+      </div>
+      <div class="field">
+        <label for="template">Schema</label>
+        <select id="template"></select>
+        <small id="templateHelp"></small>
+      </div>
+      <div class="row2">
+        <div class="field">
+          <label for="race">Datum van de wedstrijd</label>
+          <input type="date" id="race">
+          <small>Het schema wordt zo gepland dat de laatste week op deze datum uitkomt.</small>
+        </div>
+        <div class="field" id="weeksField" hidden>
+          <label for="weeks">Aantal weken</label>
+          <input type="number" id="weeks" min="1" max="52" value="8">
+        </div>
+      </div>
+      <div class="row2">
+        <div class="field">
+          <label for="p1">Jouw naam</label>
+          <input type="text" id="p1" required maxlength="30" placeholder="bv. Sam">
+        </div>
+        <div class="field">
+          <label for="p2">Naam loopmaatje <span class="muted">(mag leeg)</span></label>
+          <input type="text" id="p2" maxlength="30" placeholder="bv. Robin">
+        </div>
+      </div>
+      <div class="notice err" id="err" hidden></div>
+      <div><button class="primary" type="submit" id="go">Maak mijn schema</button></div>
+      <p class="muted" style="margin:0;font-size:.82rem">Daarna kun je elke training nog aanpassen en krijg je een link om te delen.</p>
+    </form>
+  </section>
+
+  <section class="card">
+    <h2 style="margin-bottom:6px">Zo werkt het</h2>
+    <ol class="steps">
+      <li>Kies een schema en de datum van je wedstrijd.</li>
+      <li>Pas trainingen aan als je wil.</li>
+      <li>Deel de link met je loopmaatje.</li>
+      <li>Vink samen je trainingen af en houd notities bij.</li>
+    </ol>
+    <p class="muted" style="margin:10px 0 0;font-size:.82rem">Tip: zet Loopmaatje op je beginscherm via "Deel" → "Zet op beginscherm" om het als app te gebruiken. Bewaar je link goed: wie hem heeft, kan het schema zien en aanpassen.</p>
+  </section>
+</main>
+<script type="module" src="/home.js"></script>
+</body>
+</html>
